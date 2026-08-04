@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AOS Online - Platform Penilaian Implementasi AOS</title>
+  <meta name="description" content="AOS Online adalah platform penilaian implementasi AOS di setiap perusahaan. Bangun Sistem & Kaderisasi Perusahaan sesuai dengan Standar Korporasi Berkah.">
+  <link rel="icon" type="image/x-icon" href="https://aosonline.id/images/logo-aosonline.png">
+  
+  <!-- Google Fonts: Barlow, Outfit & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN & Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Barlow', 'Outfit', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            aos: {
+              blue: '#2F80ED',
+              darkBlue: '#1d68d1',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased hex-bg min-h-screen flex flex-col selection:bg-blue-600 selection:text-white transition-colors duration-300">
+
+  <!-- NAVIGATION HEADER -->
+  <nav class="fixed w-full top-0 left-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 transition-colors duration-300">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="text-2xl font-bold flex items-center gap-2 group">
+        <img src="https://aosonline.id/images/logo-aosonline.png" alt="AOS Online Logo" class="w-8 h-8 group-hover:scale-105 transition-transform" />
+        <span class="font-heading text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">AOS Online</span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="hidden sm:flex items-center gap-x-2 sm:gap-x-3 md:gap-x-6 lg:gap-x-8 text-sm font-medium">
+        <li>
+          <a href="index.html" class="font-bold text-blue-600 dark:text-blue-400">Beranda</a>
+        </li>
+        <li>
+          <a href="features.html" class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Fitur</a>
+        </li>
+        <li>
+          <a href="pricing.html" class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Harga</a>
+        </li>
+        <li>
+          <a href="blog.html" class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+        </li>
+        <li>
+          <a href="contact.html" class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Kontak Kami</a>
+        </li>
+        <li>
+          <a href="workspace.html" class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Workspace</a>
+        </li>
+        <li>
+          <a href="https://aosonline.id/login" class="px-5 py-2.5 font-semibold text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 rounded-lg shadow-sm transition-all inline-block">Login</a>
+        </li>
+        <li>
+          <!-- Dark Mode Toggle Button -->
+          <button id="theme-toggle" type="button" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Theme Mode">
+            <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+            <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-amber-400"></i>
+          </button>
+        </li>
+      </ul>
+
+      <!-- Mobile Menu Button -->
+      <div class="flex items-center gap-2 sm:hidden">
+        <button id="theme-toggle-mobile" type="button" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300">
+          <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+          <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-amber-400"></i>
+        </button>
+        <button id="mobile-menu-btn" type="button" class="p-2 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Menu Drawer -->
+    <div id="mobile-menu" class="hidden sm:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-6 space-y-3 shadow-xl">
+      <a href="index.html" class="block py-2 font-bold text-blue-600 dark:text-blue-400">Beranda</a>
+      <a href="features.html" class="block py-2 text-slate-700 dark:text-slate-300 hover:text-blue-600">Fitur</a>
+      <a href="pricing.html" class="block py-2 text-slate-700 dark:text-slate-300 hover:text-blue-600">Harga</a>
+      <a href="blog.html" class="block py-2 text-slate-700 dark:text-slate-300 hover:text-blue-600">Blog</a>
+      <a href="contact.html" class="block py-2 text-slate-700 dark:text-slate-300 hover:text-blue-600">Kontak Kami</a>
+      <a href="workspace.html" class="block py-2 text-slate-700 dark:text-slate-300 hover:text-blue-600">Workspace</a>
+      <a href="invitations.html" class="block py-2 text-slate-700 dark:text-slate-300 hover:text-blue-600">Undangan</a>
+      <div class="pt-4 border-t border-slate-200 dark:border-slate-800">
+        <a href="https://aosonline.id/login" class="w-full block text-center py-2.5 font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-grow pt-24 md:pt-32">
+    
+    <!-- HERO SECTION -->
+    <section id="hero" class="container mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        
+        <!-- Hero Left Column -->
+        <div class="flex flex-col justify-center text-center md:text-left">
+          <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-slate-900 dark:text-white">
+            12 Langkah Menuju
+            <br>
+            <span class="bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 bg-clip-text text-transparent typewriter-target" id="typewriter">
+              Korporasi Berkah
+            </span>
+          </h1>
+
+          <p class="my-8 text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+            AOS Online adalah platform penilaian implementasi AOS di setiap perusahaan.<br>
+            Bangun Sistem &amp; Kaderisasi Perusahaan sesuai dengan Standar Korporasi.
+          </p>
+
+          <div class="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-3">
+            <a href="features.html" class="w-full sm:w-auto px-6 py-3 text-center font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow transition-all">Pelajari</a>
+            <a href="https://aosonline.id/register" class="w-full sm:w-auto px-6 py-3 text-center font-semibold text-slate-800 dark:text-slate-100 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 rounded-lg transition-all">Daftar Sekarang</a>
+          </div>
+        </div>
+
+        <!-- Hero Right Column (App Screenshot) -->
+        <div class="flex items-center justify-center p-4 bg-slate-200/50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xl">
+          <img src="https://aosonline.id/images/media/asa-consulting.jpg"
+               alt="AOS Online App Screenshot"
+               class="w-full h-auto shadow-md rounded-xl object-cover" />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FITUR AOS CHECKLIST SECTION -->
+    <section id="features" class="py-20 relative bg-slate-100/60 dark:bg-slate-900/40 border-y border-slate-200/60 dark:border-slate-800/80">
+      
+      <!-- Subtle Blue Ambient Glow -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/80 border border-blue-200/80 dark:border-blue-900/80 text-blue-600 dark:text-blue-400 text-xs font-semibold uppercase tracking-wider mb-4">
+            <span>Assessment Module</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight">
+            Fitur Modul <span class="text-blue-600 dark:text-blue-400">AOS Checklist</span>
+          </h2>
+          <p class="mt-3 text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
+            9 instrumen penilaian komprehensif untuk mengevaluasi tata kelola, kesiapan scale-up, serta akuntabilitas tim bisnis Anda.
+          </p>
+        </div>
+
+        <!-- Clean Minimalist Grid Cards (Static display, no link bar) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Card 1 -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
+                  <i data-lucide="list-checks" class="w-5 h-5"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">01</span>
+              </div>
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white mb-2">
+                AOS Checklist
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Evaluasi 12 Pilar Standar Korporasi Berkah secara berkala dan terukur.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
+                  <i data-lucide="building-2" class="w-5 h-5"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">02</span>
+              </div>
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white mb-2">
+                Informasi Perusahaan
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Kelola profil usaha, kelengkapan legalitas, serta struktur hirarki divisi.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
+                  <i data-lucide="target" class="w-5 h-5"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">03</span>
+              </div>
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white mb-2">
+                Tujuan Strategis
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Penetapan target kuantitatif bisnis yang terukur dan jelas per triwulan.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
+                  <i data-lucide="eye" class="w-5 h-5"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">04</span>
+              </div>
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white mb-2">
+                Visi Organisasi
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Arah dan cita-cita jangka panjang perusahaan berlandaskan syariat.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
+                  <i data-lucide="flag" class="w-5 h-5"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">05</span>
+              </div>
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white mb-2">
+                Misi &amp; Nilai Budaya
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Langkah operasional &amp; pembentukan kultur kerja berkarakter unggul.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
+                  <i data-lucide="trending-up" class="w-5 h-5"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">06</span>
+              </div>
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white mb-2">
+                Tujuan Perusahaan
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Penyelarasan sasaran jangka menengah seluruh departemen operasional.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
+                  <i data-lucide="gift" class="w-5 h-5"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">07</span>
+              </div>
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white mb-2">
+                Reward &amp; Apresiasi
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Skema penghargaan kinerja karyawan yang adil, transparan, dan memotivasi.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
+                  <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">08</span>
+              </div>
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white mb-2">
+                Laporan &amp; Analisis
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Grafik radar kesehatan bisnis &amp; laporan pencapaian otomatis.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 9 -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-5">
+                <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
+                  <i data-lucide="users" class="w-5 h-5"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">09</span>
+              </div>
+              <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white mb-2">
+                Mengelola Tim &amp; Hak Akses
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Manajemen akun pengguna, ruang kerja multi-tenant, dan pemetaan kader SDM.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TENTANG AOS CHECKLIST SECTION -->
+    <section id="about" class="py-20 relative">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/80 border border-blue-200/80 dark:border-blue-900/80 text-blue-600 dark:text-blue-400 text-xs font-semibold uppercase tracking-wider mb-4">
+            <i data-lucide="shield-check" class="w-4 h-4"></i>
+            <span>Prinsip Utama Transformation System</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight">
+            Tentang <span class="text-blue-600 dark:text-blue-400">AOS Checklist</span>
+          </h2>
+          <p class="mt-3 text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
+            Tolok ukur komprehensif dalam mentransformasi bisnis manual menjadi korporasi yang terstruktur, autopilot, dan berlandaskan nilai syariat.
+          </p>
+        </div>
+
+        <!-- Clean Bento Grid Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          
+          <!-- Hero Card (4 columns) -->
+          <div class="lg:col-span-4 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-8 shadow-xl border border-blue-500/20 flex flex-col justify-between relative overflow-hidden">
+            
+            <div>
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-blue-200 text-xs font-semibold mb-6 backdrop-blur-sm border border-white/10">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-300"></i>
+                <span>Metodologi Berkelanjutan</span>
+              </span>
+              <h3 class="font-heading text-2xl font-extrabold leading-tight text-white mb-4">
+                Continuous Improvement Menuju Standar Ideal
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed mb-6">
+                Penilaian ini mengukur kemampuan organisasi dalam membangun ekosistem bisnis yang stabil, digital, serta siap melakukan ekspansi (scale up).
+              </p>
+            </div>
+
+            <div class="pt-6 border-t border-white/10 space-y-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-sm">
+                  100%
+                </div>
+                <div>
+                  <p class="text-xs font-bold text-white">Standar Syariat Islam</p>
+                  <p class="text-[11px] text-slate-300">Keberkahan &amp; Etika Bisnis</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Unified Grid Items (8 columns) -->
+          <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            
+            <!-- Bento Item 1 -->
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-blue-500/40 transition-all">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
+                <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white mb-1.5">
+                Penilaian Otentik &amp; Terstruktur
+              </h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Mengukur sejauh mana perusahaan telah menerapkan sistem manajemen terstruktur dan selaras nilai keberkahan.
+              </p>
+            </div>
+
+            <!-- Bento Item 2 -->
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-blue-500/40 transition-all">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
+                <i data-lucide="trending-up" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white mb-1.5">
+                Sistem Bertumbuh Setiap Tahun
+              </h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Menilai kemampuan perusahaan membangun sistem yang otentik, stabil, digital, serta konsisten bertumbuh.
+              </p>
+            </div>
+
+            <!-- Bento Item 3 -->
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-blue-500/40 transition-all">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
+                <i data-lucide="users-round" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white mb-1.5">
+                Kaderisasi SDM Pemimpin
+              </h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Mengevaluasi efektivitas pembentukan kader SDM yang loyal, profesional, berbudaya, dan berkarakter unggul.
+              </p>
+            </div>
+
+            <!-- Bento Item 4 -->
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-blue-500/40 transition-all">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
+                <i data-lucide="file-check-2" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white mb-1.5">
+                Verifikasi Bukti Lapangan
+              </h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Penilaian berbasis bukti dokumen legal, struktur organisasi yang sah, serta verifikasi eksekusi di lapangan.
+              </p>
+            </div>
+
+            <!-- Bento Item 5 -->
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-blue-500/40 transition-all">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
+                <i data-lucide="rocket" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white mb-1.5">
+                Tolok Ukur Scale-Up Syariah
+              </h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Acuan transformasi menuju organisasi sustainable, berorientasi pertumbuhan, dan berlandaskan nilai Islam.
+              </p>
+            </div>
+
+            <!-- Bento Item 6 -->
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-blue-500/40 transition-all">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
+                <i data-lucide="award" class="w-5 h-5"></i>
+              </div>
+              <h4 class="font-heading font-bold text-base text-slate-900 dark:text-white mb-1.5">
+                Berdaya Saing &amp; Beretika
+              </h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Mendorong terciptanya perusahaan yang unggul secara kompetitif, beretika tinggi, dan berkelanjutan.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 py-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between space-y-8 sm:space-y-0 sm:space-x-8">
+        
+        <!-- ASA Consulting Address -->
+        <div class="w-full sm:w-1/2 text-sm">
+          <h6 class="mb-3 font-heading font-bold text-base text-slate-900 dark:text-white">ASA Consulting</h6>
+          <p class="leading-relaxed">
+            Jl. Ronggowarsito No.151, Timuran, Kec. Banjarsari,<br>
+            Kota Surakarta, Jawa Tengah 57131
+          </p>
+        </div>
+
+        <!-- Kontak Kami -->
+        <div class="w-full sm:w-1/2 text-sm sm:text-right">
+          <h6 class="mb-3 font-heading font-bold text-base text-slate-900 dark:text-white">Kontak Kami</h6>
+          <ul class="space-y-1.5 leading-relaxed">
+            <li><a href="tel:+62811-3000-6789" class="hover:text-blue-600 transition-colors">(+62) 811-3000-6789</a></li>
+            <li><a href="mailto:aosonline.official@gmail.com" class="hover:text-blue-600 transition-colors">aosonline.official@gmail.com</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="border-t border-slate-200 dark:border-slate-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 dark:text-slate-400">
+        <p>Copyright &copy; 2026 AOS Online. All rights reserved.</p>
+        <p class="mt-2 sm:mt-0 font-medium">AOS Online Landing Page</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Javascript File -->
+  <script src="script.js"></script>
+</body>
+</html>

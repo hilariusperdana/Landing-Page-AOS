@@ -1,0 +1,83 @@
+/* ==========================================================================
+   AOS ONLINE LANDING PAGE STYLESHEET
+   Matching Design System from company-profile-react
+   ========================================================================== */
+
+/* Hexagonal background pattern — light mode */
+.hex-bg {
+  background-color: #f8fafc;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='156' viewBox='0 0 120 156'%3E%3Cg stroke='%231859bc' stroke-width='1.0' stroke-opacity='0.04' fill='none'%3E%3Cpath d='M7.5,-13 h15 l15,26 l-15,26 h-15 l-15,-26 z M7.5,13 h15 l15,26 l-15,26 h-15 l-15,-26 z M7.5,39 h15 l15,26 l-15,26 h-15 l-15,-26 z M7.5,65 h15 l15,26 l-15,26 h-15 l-15,-26 z M7.5,91 h15 l15,26 l-15,26 h-15 l-15,-26 z M7.5,117 h15 l15,26 l-15,26 h-15 l-15,-26 z M127.5,-13 h15 l15,26 l-15,26 h-15 l-15,-26 z M127.5,13 h15 l15,26 l-15,26 h-15 l-15,-26 z M127.5,39 h15 l15,26 l-15,26 h-15 l-15,-26 z M127.5,65 h15 l15,26 l-15,26 h-15 l-15,-26 z M127.5,91 h15 l15,26 l-15,26 h-15 l-15,-26 z M127.5,117 h15 l15,26 l-15,26 h-15 l-15,-26 z M67.5,-13 h15 l15,26 l-15,26 h-15 l-15,-26 z M67.5,13 h15 l15,26 l-15,26 h-15 l-15,-26 z M67.5,39 h15 l15,26 l-15,26 h-15 l-15,-26 z M67.5,65 h15 l15,26 l-15,26 h-15 l-15,-26 z M67.5,91 h15 l15,26 l-15,26 h-15 l-15,-26 z M67.5,117 h15 l15,26 l-15,26 h-15 l-15,-26 z M37.5,-13 h15 l15,26 l-15,26 h-15 l-15,-26 z M37.5,65 h15 l15,26 l-15,26 h-15 l-15,-26 z M97.5,-13 h15 l15,26 l-15,26 h-15 l-15,-26 z M97.5,65 h15 l15,26 l-15,26 h-15 l-15,-26 z M-22.5,-13 h15 l15,26 l-15,26 h-15 l-15,-26 z M-22.5,65 h15 l15,26 l-15,26 h-15 l-15,-26 z M37.5,39 h15 l15,26 l-15,26 h-15 l-15,-26 z M37.5,117 h15 l15,26 l-15,26 h-15 l-15,-26 z M97.5,39 h15 l15,26 l-15,26 h-15 l-15,-26 z M97.5,117 h15 l15,26 l-15,26 h-15 l-15,-26 z M-22.5,39 h15 l15,26 l-15,26 h-15 l-15,-26 z M-22.5,117 h15 l15,26 l-15,26 h-15 l-15,-26 z M37.5,13 h15 l15,26 l-15,26 h-15 l-15,-26 z M37.5,91 h15 l15,26 l-15,26 h-15 l-15,-26 z M97.5,13 h15 l15,26 l-15,26 h-15 l-15,-26 z M97.5,91 h15 l15,26 l-15,26 h-15 l-15,-26 z M-22.5,13 h15 l15,26 l-15,26 h-15 l-15,-26 z M-22.5,91 h15 l15,26 l-15,26 h-15 l-15,-26 z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 360px 468px;
+  background-repeat: repeat;
+}
+
+/* Hexagonal background pattern — dark mode */
+.dark .hex-bg {
+  background-color: #030712;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='156' viewBox='0 0 120 156'%3E%3Cg stroke='%234d7cc7' stroke-width='1.0' stroke-opacity='0.07' fill='none'%3E%3Cpath d='M7.5,-13 h15 l15,26 l-15,26 h-15 l-15,-26 z M7.5,13 h15 l15,26 l-15,26 h-15 l-15,-26 z M7.5,39 h15 l15,26 l-15,26 h-15 l-15,-26 z M7.5,65 h15 l15,26 l-15,26 h-15 l-15,-26 z M7.5,91 h15 l15,26 l-15,26 h-15 l-15,-26 z M7.5,117 h15 l15,26 l-15,26 h-15 l-15,-26 z M127.5,-13 h15 l15,26 l-15,26 h-15 l-15,-26 z M127.5,13 h15 l15,26 l-15,26 h-15 l-15,-26 z M127.5,39 h15 l15,26 l-15,26 h-15 l-15,-26 z M127.5,65 h15 l15,26 l-15,26 h-15 l-15,-26 z M127.5,91 h15 l15,26 l-15,26 h-15 l-15,-26 z M127.5,117 h15 l15,26 l-15,26 h-15 l-15,-26 z M67.5,-13 h15 l15,26 l-15,26 h-15 l-15,-26 z M67.5,13 h15 l15,26 l-15,26 h-15 l-15,-26 z M67.5,39 h15 l15,26 l-15,26 h-15 l-15,-26 z M67.5,65 h15 l15,26 l-15,26 h-15 l-15,-26 z M67.5,91 h15 l15,26 l-15,26 h-15 l-15,-26 z M67.5,117 h15 l15,26 l-15,26 h-15 l-15,-26 z M37.5,-13 h15 l15,26 l-15,26 h-15 l-15,-26 z M37.5,65 h15 l15,26 l-15,26 h-15 l-15,-26 z M97.5,-13 h15 l15,26 l-15,26 h-15 l-15,-26 z M97.5,65 h15 l15,26 l-15,26 h-15 l-15,-26 z M-22.5,-13 h15 l15,26 l-15,26 h-15 l-15,-26 z M-22.5,65 h15 l15,26 l-15,26 h-15 l-15,-26 z M37.5,39 h15 l15,26 l-15,26 h-15 l-15,-26 z M37.5,117 h15 l15,26 l-15,26 h-15 l-15,-26 z M97.5,39 h15 l15,26 l-15,26 h-15 l-15,-26 z M97.5,117 h15 l15,26 l-15,26 h-15 l-15,-26 z M-22.5,39 h15 l15,26 l-15,26 h-15 l-15,-26 z M-22.5,117 h15 l15,26 l-15,26 h-15 l-15,-26 z M37.5,13 h15 l15,26 l-15,26 h-15 l-15,-26 z M37.5,91 h15 l15,26 l-15,26 h-15 l-15,-26 z M97.5,13 h15 l15,26 l-15,26 h-15 l-15,-26 z M97.5,91 h15 l15,26 l-15,26 h-15 l-15,-26 z M-22.5,13 h15 l15,26 l-15,26 h-15 l-15,-26 z M-22.5,91 h15 l15,26 l-15,26 h-15 l-15,-26 z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Typewriter animation cursor effect */
+.typewriter-target::after {
+  content: '|';
+  display: inline-block;
+  color: #004EEB;
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Smooth Accordion Transitions */
+.faq-content {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/* Custom Card Hover Glow Effect */
+.card-glow {
+  position: relative;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(0, 78, 235, 0.4), rgba(21, 94, 239, 0.1), transparent);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-glow:hover::before {
+  opacity: 1;
+}
