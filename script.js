@@ -14,11 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
   const htmlElement = document.documentElement;
 
-  // Check saved theme or system preference
+  // Check saved theme (default to light mode if not set)
   const savedTheme = localStorage.getItem('aos-theme');
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+  if (savedTheme === 'dark') {
     htmlElement.classList.add('dark');
   } else {
     htmlElement.classList.remove('dark');
