@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - AOS Online</title>
+  <meta name="description" content="Masuk ke dashboard AOS Online untuk mengelola platform penilaian implementasi Anda.">
+  <link rel="icon" type="image/x-icon" href="https://aosonline.id/images/logo-aosonline.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN & Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Barlow', 'Outfit', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased h-screen flex selection:bg-blue-600 selection:text-white transition-colors duration-300">
+
+  <!-- Left Side: Login Form -->
+  <div class="w-full lg:w-1/2 flex flex-col justify-center px-8 sm:px-16 lg:px-24 xl:px-32 py-12 h-full overflow-y-auto bg-white dark:bg-slate-950 relative">
+    
+    <!-- Top Right Corner Controls (Theme Toggle) -->
+    <div class="absolute top-6 right-6">
+      <button id="theme-toggle" type="button" class="p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" aria-label="Toggle Theme Mode">
+        <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+        <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-amber-400"></i>
+      </button>
+    </div>
+
+    <!-- Back to Home -->
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-12 w-max">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i>
+      Kembali ke Beranda
+    </a>
+
+    <!-- Logo -->
+    <div class="flex items-center gap-3 mb-10">
+      <img src="https://aosonline.id/images/logo-aosonline.png" alt="AOS Online Logo" class="w-8 h-8" />
+      <span class="font-heading text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">AOS Online</span>
+    </div>
+
+    <!-- Heading -->
+    <h1 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-2 leading-tight">
+      Selamat Datang Kembali di<br>AOS Online
+    </h1>
+    <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-10">Senang melihat Anda kembali :)</p>
+
+    <!-- Form -->
+    <form class="space-y-6" action="#" method="POST">
+      
+      <!-- Email Input -->
+      <div>
+        <label for="email" class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Alamat Email <span class="text-red-500">*</span></label>
+        <input type="email" id="email" required 
+               class="w-full px-4 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-slate-400 font-medium" 
+               placeholder="Masukkan email Anda">
+      </div>
+
+      <!-- Password Input -->
+      <div>
+        <label for="password" class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Kata Sandi <span class="text-red-500">*</span></label>
+        <div class="relative">
+          <input type="password" id="password" required 
+                 class="w-full px-4 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all placeholder:text-slate-400 font-medium" 
+                 placeholder="Masukkan kata sandi">
+          <button type="button" id="togglePassword" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1">
+            <i data-lucide="eye" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Remember me & Forgot Password -->
+      <div class="flex items-center justify-between pt-1">
+        <label class="flex items-center gap-2.5 cursor-pointer">
+          <input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-600 bg-white dark:bg-slate-900 dark:border-slate-700 cursor-pointer">
+          <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Ingat Saya</span>
+        </label>
+        <a href="#" class="text-sm font-semibold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Lupa Kata Sandi?</a>
+      </div>
+
+      <!-- Login Button -->
+      <button type="submit" class="w-full py-4 px-4 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-bold rounded-xl shadow-lg hover:bg-slate-800 dark:hover:bg-white hover:-translate-y-0.5 transition-all focus:ring-2 focus:ring-offset-2 focus:ring-slate-900 dark:focus:ring-slate-100 dark:focus:ring-offset-slate-950 mt-4">
+        Masuk
+      </button>
+
+      <!-- OR Divider -->
+      <div class="flex items-center my-6">
+        <div class="flex-grow border-t border-slate-200 dark:border-slate-800"></div>
+        <span class="px-4 text-xs font-bold text-slate-400 uppercase tracking-wider">atau masuk dengan</span>
+        <div class="flex-grow border-t border-slate-200 dark:border-slate-800"></div>
+      </div>
+
+      <!-- SSO Buttons -->
+      <div class="grid grid-cols-1 gap-4">
+        <!-- Google Button -->
+        <button type="button" class="w-full py-3.5 px-4 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold rounded-xl shadow-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex justify-center items-center gap-3">
+          <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="w-5 h-5">
+          Masuk dengan Google
+        </button>
+      </div>
+
+      <!-- Register Link -->
+      <p class="text-center text-sm font-semibold text-slate-600 dark:text-slate-400 mt-8 pt-4">
+        Belum punya akun? 
+        <a href="https://aosonline.id/register" class="text-orange-500 hover:text-orange-600 transition-colors ml-1">Daftar Sekarang</a>
+      </p>
+
+    </form>
+  </div>
+
+  <!-- Right Side: Gradient Background -->
+  <div class="hidden lg:flex w-1/2 relative bg-slate-900 overflow-hidden items-center justify-center p-12">
+
+
+    <!-- Vivid Abstract Gradient matching screenshot -->
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-200 via-blue-500 to-indigo-900 opacity-90 mix-blend-screen"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-blue-700 via-transparent to-transparent opacity-80"></div>
+    
+    <!-- Content Overlay -->
+    <div class="relative z-10 text-white max-w-lg text-center bg-white/10 backdrop-blur-md p-10 rounded-3xl border border-white/20 shadow-2xl">
+      <div class="flex items-center justify-center mx-auto mb-6">
+        <img src="logo asa.webp" alt="ASA Consulting" class="h-12 w-auto object-contain drop-shadow-md hover:scale-105 transition-transform">
+      </div>
+      <h2 class="font-heading text-3xl font-extrabold mb-4 leading-tight">Sistem Operasional<br>Masa Depan</h2>
+      <p class="text-blue-50 text-sm leading-relaxed">
+        Kelola, ukur, dan scale-up bisnis Anda dengan ekosistem digital berbasis syariat. Evaluasi ratusan pilar secara otomatis, terstruktur, dan akuntabel.
+      </p>
+    </div>
+  </div>
+
+  <!-- Javascript File -->
+  <script src="script.js"></script>
+  <script>
+    // Initialize Lucide Icons for this specific page if script.js didn't cover dynamic items
+    if(typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+
+    // Toggle Password Visibility
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+
+    if(togglePassword && password) {
+      togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        
+        // toggle the eye slash icon
+        const icon = this.querySelector('i');
+        if (type === 'text') {
+          icon.setAttribute('data-lucide', 'eye-off');
+        } else {
+          icon.setAttribute('data-lucide', 'eye');
+        }
+        lucide.createIcons();
+      });
+    }
+  </script>
+</body>
+</html>
