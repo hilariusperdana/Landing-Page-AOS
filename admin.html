@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full bg-slate-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Pengaturan Landing Page | AOS Online</title>
+  <link rel="icon" type="image/x-icon" href="https://aosonline.id/images/logo-aosonline.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* Filament-style scrollbars & tabs */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .tab-btn.active {
+      color: #2563eb;
+      border-color: #2563eb;
+      background-color: #eff6ff;
+    }
+  </style>
+</head>
+<body class="h-full font-sans antialiased text-slate-900 bg-slate-100 flex flex-col">
+
+  <!-- FILAMENT ADMIN TOPBAR & SIDEBAR WRAPPER -->
+  <div class="min-h-screen flex flex-col md:flex-row">
+
+    <!-- SIDEBAR NAV -->
+    <aside class="w-full md:w-64 bg-slate-900 text-slate-300 flex-shrink-0 flex flex-col border-r border-slate-800">
+      
+      <!-- Brand Header -->
+      <div class="h-16 flex items-center px-6 bg-slate-950 border-b border-slate-800 gap-3">
+        <img src="https://aosonline.id/images/logo-aosonline.png" alt="AOS Logo" class="w-8 h-8">
+        <div>
+          <h1 class="font-bold text-white text-base leading-tight">AOS Online</h1>
+          <p class="text-[11px] text-slate-400">Admin Control Panel</p>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto text-sm font-medium">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors">
+          <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors">
+          <i data-lucide="building-2" class="w-5 h-5"></i>
+          <span>Tenants & Workspaces</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors">
+          <i data-lucide="users" class="w-5 h-5"></i>
+          <span>Manajemen Pengguna</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors">
+          <i data-lucide="credit-card" class="w-5 h-5"></i>
+          <span>Langganan & Transaksi</span>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors">
+          <i data-lucide="newspaper" class="w-5 h-5"></i>
+          <span>Artikel Blog</span>
+        </a>
+
+        <!-- Group: Pengaturan (Expanded) -->
+        <div class="pt-4 space-y-1">
+          <div class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+            Pengaturan Aplikasi
+          </div>
+
+          <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors text-xs">
+            <i data-lucide="settings" class="w-4 h-4"></i>
+            <span>Pengaturan Umum</span>
+          </a>
+
+          <!-- ACTIVE ITEM -->
+          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-blue-600 text-white font-semibold shadow-sm transition-colors text-xs">
+            <i data-lucide="layout-template" class="w-4 h-4"></i>
+            <span>Pengaturan Landing Page</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="p-4 bg-slate-950 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+        <span class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>v2.4.0 (Filament 4)</span>
+        </span>
+        <a href="index.html" target="_blank" class="hover:text-white flex items-center gap-1 text-[11px] text-blue-400">
+          <span>Lihat LP</span>
+          <i data-lucide="external-link" class="w-3 h-3"></i>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="flex-1 flex flex-col min-w-0">
+
+      <!-- TOP HEADER BAR -->
+      <header class="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between shadow-sm sticky top-0 z-30">
+        
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2 text-xs font-medium text-slate-500">
+          <span>Pengaturan</span>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span class="text-slate-900 font-semibold">Pengaturan Landing Page</span>
+        </div>
+
+        <!-- Right User Actions -->
+        <div class="flex items-center gap-4">
+          <button class="p-2 text-slate-500 hover:text-slate-700 rounded-lg hover:bg-slate-100 relative">
+            <i data-lucide="bell" class="w-5 h-5"></i>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-blue-600"></span>
+          </button>
+          
+          <div class="h-8 w-px bg-slate-200"></div>
+
+          <div class="flex items-center gap-3 cursor-pointer">
+            <div class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-sm shadow">
+              AD
+            </div>
+            <div class="hidden sm:block text-left">
+              <p class="text-xs font-semibold text-slate-900">Super Administrator</p>
+              <p class="text-[11px] text-slate-500">admin@aosonline.id</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- PAGE CONTENT BODY -->
+      <main class="flex-1 p-6 max-w-7xl w-full mx-auto space-y-6">
+
+        <!-- HEADER TITLE & ACTIONS -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold font-heading text-slate-900 tracking-tight">Pengaturan Landing Page</h2>
+            <p class="text-xs text-slate-500 mt-1">Kelola teks narasi, banner hero, modul checklist, bento grid, dan kontak publik secara dinamis.</p>
+          </div>
+
+          <button id="save-btn" type="button" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-semibold rounded-xl shadow-md transition-all">
+            <i data-lucide="save" class="w-4 h-4"></i>
+            <span>Simpan Perubahan</span>
+          </button>
+        </div>
+
+        <!-- FILAMENT FORM CARD WITH TABS -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          
+          <!-- TAB NAVIGATION BAR -->
+          <div class="border-b border-slate-200 bg-slate-50/50 px-4 pt-3 flex gap-2 overflow-x-auto">
+            <button class="tab-btn active px-4 py-3 border-b-2 border-transparent font-medium text-xs rounded-t-xl flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-all flex-shrink-0" data-tab="tab-hero">
+              <i data-lucide="sparkles" class="w-4 h-4 text-blue-500"></i>
+              <span>1. Hero Section</span>
+            </button>
+
+            <button class="tab-btn px-4 py-3 border-b-2 border-transparent font-medium text-xs rounded-t-xl flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-all flex-shrink-0" data-tab="tab-features">
+              <i data-lucide="list-checks" class="w-4 h-4 text-orange-500"></i>
+              <span>2. Fitur Modul (Checklist)</span>
+            </button>
+
+            <button class="tab-btn px-4 py-3 border-b-2 border-transparent font-medium text-xs rounded-t-xl flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-all flex-shrink-0" data-tab="tab-about">
+              <i data-lucide="grid" class="w-4 h-4 text-indigo-500"></i>
+              <span>3. Tentang AOS (Bento Grid)</span>
+            </button>
+
+            <button class="tab-btn px-4 py-3 border-b-2 border-transparent font-medium text-xs rounded-t-xl flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-all flex-shrink-0" data-tab="tab-features-page">
+              <i data-lucide="layers" class="w-4 h-4 text-emerald-500"></i>
+              <span>4. Halaman Fitur Detail</span>
+            </button>
+
+            <button class="tab-btn px-4 py-3 border-b-2 border-transparent font-medium text-xs rounded-t-xl flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-all flex-shrink-0" data-tab="tab-pricing">
+              <i data-lucide="tag" class="w-4 h-4 text-purple-500"></i>
+              <span>5. Harga &amp; FAQ</span>
+            </button>
+
+            <button class="tab-btn px-4 py-3 border-b-2 border-transparent font-medium text-xs rounded-t-xl flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-all flex-shrink-0" data-tab="tab-contact">
+              <i data-lucide="phone-call" class="w-4 h-4 text-rose-500"></i>
+              <span>6. Kontak Kami &amp; Map</span>
+            </button>
+
+            <button class="tab-btn px-4 py-3 border-b-2 border-transparent font-medium text-xs rounded-t-xl flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-all flex-shrink-0" data-tab="tab-footer">
+              <i data-lucide="layout-grid" class="w-4 h-4 text-cyan-500"></i>
+              <span>7. Footer &amp; Branding</span>
+            </button>
+          </div>
+
+          <!-- TAB CONTENTS CONTAINER -->
+          <div class="p-6">
+
+            <!-- TAB 1: HERO SECTION -->
+            <div id="tab-hero" class="tab-content active space-y-6">
+              <div class="border-b border-slate-100 pb-4">
+                <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+                  <i data-lucide="sparkles" class="w-5 h-5 text-blue-600"></i>
+                  Pengaturan Hero Banner Beranda
+                </h3>
+                <p class="text-xs text-slate-500">Atur judul headline utama, teks animasi typewriter, deskripsi, dan tombol aksi (CTA).</p>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Headline Prefix -->
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-2">Headline Prefix Text <span class="text-rose-500">*</span></label>
+                  <input type="text" value="12 Langkah Menuju" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all font-medium">
+                  <p class="text-[11px] text-slate-400 mt-1">Teks sebelum judul yang berganti warna gradient.</p>
+                </div>
+
+                <!-- Typewriter Phrases -->
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-2">Frasa Dynamic Typewriter (Per Baris) <span class="text-rose-500">*</span></label>
+                  <textarea rows="3" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all font-medium">Korporasi Berkah
+Delegasi Mudah
+Hasil Melimpah</textarea>
+                  <p class="text-[11px] text-slate-400 mt-1">Satu frasa per baris. Animasi ketik akan berganti kata dari baris-baris ini.</p>
+                </div>
+
+                <!-- Hero Subtitle / Description -->
+                <div class="md:col-span-2">
+                  <label class="block text-xs font-semibold text-slate-700 mb-2">Deskripsi Hero Banner <span class="text-rose-500">*</span></label>
+                  <textarea rows="3" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all font-medium">AOS Online adalah platform penilaian implementasi AOS di setiap perusahaan.
+Bangun Sistem & Kaderisasi Perusahaan sesuai dengan Standar Korporasi Berkah.</textarea>
+                </div>
+
+                <!-- CTA Primary -->
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-2">Tombol Utama (CTA 1) - Label &amp; Link</label>
+                  <div class="grid grid-cols-2 gap-3">
+                    <input type="text" value="Pelajari" placeholder="Label Tombol" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500">
+                    <input type="text" value="features.html" placeholder="URL Tujuan" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500">
+                  </div>
+                </div>
+
+                <!-- CTA Secondary -->
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-2">Tombol Sekunder (CTA 2) - Label &amp; Link</label>
+                  <div class="grid grid-cols-2 gap-3">
+                    <input type="text" value="Daftar Sekarang" placeholder="Label Tombol" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500">
+                    <input type="text" value="https://aosonline.id/register" placeholder="URL Tujuan" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500">
+                  </div>
+                </div>
+
+                <!-- Hero Image Preview -->
+                <div class="md:col-span-2 bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-center gap-4">
+                  <img src="https://aosonline.id/images/media/asa-consulting.jpg" alt="Preview Screenshot" class="w-32 h-20 object-cover rounded-lg border border-slate-300">
+                  <div class="flex-1">
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">URL Screenshot Preview Aplikasi</label>
+                    <input type="text" value="https://aosonline.id/images/media/asa-consulting.jpg" class="w-full px-3.5 py-2 text-xs bg-white border border-slate-300 rounded-lg">
+                    <p class="text-[11px] text-slate-400 mt-1">Gunakan URL gambar screenshot dashboard aplikasi di kolom kanan Hero.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- TAB 2: FITUR MODUL CHECKLIST -->
+            <div id="tab-features" class="tab-content space-y-6">
+              <div class="border-b border-slate-100 pb-4 flex justify-between items-center">
+                <div>
+                  <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+                    <i data-lucide="list-checks" class="w-5 h-5 text-orange-500"></i>
+                    Pengaturan Section 9 Modul AOS Checklist
+                  </h3>
+                  <p class="text-xs text-slate-500">Kelola 9 kartu modul penilaian komprehensif pada beranda.</p>
+                </div>
+                <button type="button" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold flex items-center gap-1.5">
+                  <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                  <span>Tambah Item Repeater</span>
+                </button>
+              </div>
+
+              <!-- Header Info -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Section Badge</label>
+                  <input type="text" value="Assessment Module" class="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg">
+                </div>
+                <div class="md:col-span-2">
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Section Judul Utama</label>
+                  <input type="text" value="Fitur Modul AOS Checklist" class="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg">
+                </div>
+              </div>
+
+              <!-- REPEATER PREVIEW (SAMPLE 3 CARDS) -->
+              <div class="space-y-4 pt-2">
+                
+                <!-- Card 1 -->
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3 relative">
+                  <div class="flex justify-between items-center border-b border-slate-200 pb-2">
+                    <span class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                      <span class="w-5 h-5 rounded bg-orange-500 text-white flex items-center justify-center text-[10px]">01</span>
+                      AOS Checklist
+                    </span>
+                    <button class="text-rose-500 hover:text-rose-700 text-xs flex items-center gap-1"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Hapus</button>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <input type="text" value="01" placeholder="Badge No" class="px-3 py-1.5 text-xs bg-white border rounded">
+                    <input type="text" value="AOS Checklist" placeholder="Judul Modul" class="px-3 py-1.5 text-xs bg-white border rounded sm:col-span-2">
+                    <input type="text" value="list-checks" placeholder="Icon Lucide" class="px-3 py-1.5 text-xs bg-white border rounded">
+                    <input type="text" value="Evaluasi 12 Pilar Standar Korporasi Berkah secara berkala dan terukur." placeholder="Deskripsi" class="px-3 py-1.5 text-xs bg-white border rounded sm:col-span-2">
+                  </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3 relative">
+                  <div class="flex justify-between items-center border-b border-slate-200 pb-2">
+                    <span class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                      <span class="w-5 h-5 rounded bg-orange-500 text-white flex items-center justify-center text-[10px]">02</span>
+                      Informasi Perusahaan
+                    </span>
+                    <button class="text-rose-500 hover:text-rose-700 text-xs flex items-center gap-1"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Hapus</button>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <input type="text" value="02" class="px-3 py-1.5 text-xs bg-white border rounded">
+                    <input type="text" value="Informasi Perusahaan" class="px-3 py-1.5 text-xs bg-white border rounded sm:col-span-2">
+                    <input type="text" value="building-2" class="px-3 py-1.5 text-xs bg-white border rounded">
+                    <input type="text" value="Kelola profil usaha, kelengkapan legalitas, serta struktur hirarki divisi." class="px-3 py-1.5 text-xs bg-white border rounded sm:col-span-2">
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3 relative">
+                  <div class="flex justify-between items-center border-b border-slate-200 pb-2">
+                    <span class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                      <span class="w-5 h-5 rounded bg-orange-500 text-white flex items-center justify-center text-[10px]">03</span>
+                      Tujuan Strategis
+                    </span>
+                    <button class="text-rose-500 hover:text-rose-700 text-xs flex items-center gap-1"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Hapus</button>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <input type="text" value="03" class="px-3 py-1.5 text-xs bg-white border rounded">
+                    <input type="text" value="Tujuan Strategis" class="px-3 py-1.5 text-xs bg-white border rounded sm:col-span-2">
+                    <input type="text" value="target" class="px-3 py-1.5 text-xs bg-white border rounded">
+                    <input type="text" value="Penetapan target kuantitatif bisnis yang terukur dan jelas per triwulan." class="px-3 py-1.5 text-xs bg-white border rounded sm:col-span-2">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- TAB 3: TENTANG AOS (BENTO GRID) -->
+            <div id="tab-about" class="tab-content space-y-6">
+              <div class="border-b border-slate-100 pb-4">
+                <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+                  <i data-lucide="grid" class="w-5 h-5 text-indigo-500"></i>
+                  Pengaturan Bento Grid Section (Tentang AOS)
+                </h3>
+                <p class="text-xs text-slate-500">Kelola 1 Bento Hero Card utama &amp; 6 Bento Items prinsip transformasi.</p>
+              </div>
+
+              <!-- Bento Hero Card Form -->
+              <div class="p-4 bg-slate-900 text-white rounded-2xl space-y-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-blue-400">Settings Bento Hero Card (Kolom Kiri 4 Span)</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-900">
+                  <input type="text" value="Continuous Improvement Menuju Standar Ideal" placeholder="Judul Hero Card" class="px-3 py-2 text-xs rounded-lg">
+                  <input type="text" value="100%" placeholder="Stat Percent" class="px-3 py-2 text-xs rounded-lg">
+                  <input type="text" value="Standar Syariat Islam" placeholder="Stat Label" class="px-3 py-2 text-xs rounded-lg">
+                  <input type="text" value="Keberkahan & Etika Bisnis" placeholder="Stat Sublabel" class="px-3 py-2 text-xs rounded-lg">
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 4: FITUR DETAIL PAGE -->
+            <div id="tab-features-page" class="tab-content space-y-6">
+              <div class="border-b border-slate-100 pb-4">
+                <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+                  <i data-lucide="layers" class="w-5 h-5 text-emerald-500"></i>
+                  Pengaturan Halaman Fitur Detail (`features.html`)
+                </h3>
+                <p class="text-xs text-slate-500">Kelola narasi banner dan fitur unggulan pada halaman fitur.</p>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Judul Banner Halaman Fitur</label>
+                <input type="text" value="Fitur Lengkap Platform AOS Online" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 border rounded-xl">
+              </div>
+            </div>
+
+            <!-- TAB 5: HARGA & FAQ -->
+            <div id="tab-pricing" class="tab-content space-y-6">
+              <div class="border-b border-slate-100 pb-4">
+                <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+                  <i data-lucide="tag" class="w-5 h-5 text-purple-500"></i>
+                  Pengaturan Halaman Harga &amp; FAQ Accordion (`pricing.html`)
+                </h3>
+                <p class="text-xs text-slate-500">Kelola judul penawaran harga &amp; daftar pertanyaan yang sering diajukan.</p>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Judul Banner Harga</label>
+                <input type="text" value="Pilih Paket Investasi Pertumbuhan Bisnis Anda" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 border rounded-xl">
+              </div>
+            </div>
+
+            <!-- TAB 6: KONTAK KAMI & MAP -->
+            <div id="tab-contact" class="tab-content space-y-6">
+              <div class="border-b border-slate-100 pb-4">
+                <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+                  <i data-lucide="phone-call" class="w-5 h-5 text-rose-500"></i>
+                  Pengaturan Informasi Perusahaan &amp; Kontak Kami (`contact.html`)
+                </h3>
+                <p class="text-xs text-slate-500">Alamat fisik, nomor telepon, email, dan link lokasi peta ASA Consulting.</p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Perusahaan</label>
+                  <input type="text" value="ASA Consulting" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 border rounded-xl">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Nomor Telepon / WhatsApp</label>
+                  <input type="text" value="(+62) 811-3000-6789" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 border rounded-xl">
+                </div>
+                <div class="md:col-span-2">
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Alamat Kantor Lengkap</label>
+                  <textarea rows="2" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 border rounded-xl">Jl. Ronggowarsito No.151, Timuran, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57131</textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 7: FOOTER & BRANDING -->
+            <div id="tab-footer" class="tab-content space-y-6">
+              <div class="border-b border-slate-100 pb-4">
+                <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+                  <i data-lucide="layout-grid" class="w-5 h-5 text-cyan-500"></i>
+                  Pengaturan Branding &amp; Footer Layout
+                </h3>
+                <p class="text-xs text-slate-500">Kelola URL Logo ASA, Logo AOS Online, dan copyright footer.</p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">URL Logo ASA Consulting</label>
+                  <input type="text" value="logo asa.webp" class="w-full px-3.5 py-2.5 text-xs bg-slate-50 border rounded-xl">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">Teks Copyright</label>
+                  <input type="text" value="Copyright © 2026 AOS Online. All rights reserved." class="w-full px-3.5 py-2.5 text-xs bg-slate-50 border rounded-xl">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- FILAMENT FORM CARD FOOTER -->
+          <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-end gap-3">
+            <button type="button" class="px-4 py-2 bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 text-xs font-semibold rounded-xl transition-all">
+              Batal
+            </button>
+            <button type="button" id="save-btn-bottom" class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-xl shadow transition-all flex items-center gap-1.5">
+              <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+              Simpan Pengaturan
+            </button>
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+
+  <!-- FILAMENT TOAST NOTIFICATION PREVIEW -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-700">
+      <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+        <i data-lucide="check-circle" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <p class="text-xs font-bold text-white">Pengaturan Saved!</p>
+        <p class="text-[11px] text-slate-300">Pengaturan Landing Page berhasil diperbarui ke database.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT FOR MOCKUP INTERACTIVITY -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+
+      // Tab Switcher Logic
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-tab');
+
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(c => c.classList.remove('active'));
+
+          btn.classList.add('active');
+          document.getElementById(targetId)?.classList.add('active');
+        });
+      });
+
+      // Toast Notification Trigger on Save
+      const showToast = () => {
+        const toast = document.getElementById('toast');
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        setTimeout(() => {
+          toast.classList.add('translate-y-20', 'opacity-0');
+        }, 3000);
+      };
+
+      document.getElementById('save-btn')?.addEventListener('click', showToast);
+      document.getElementById('save-btn-bottom')?.addEventListener('click', showToast);
+    });
+  </script>
+</body>
+</html>
